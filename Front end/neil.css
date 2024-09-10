@@ -1,12 +1,12 @@
 .btn{
     text-decoration: none;
     color: rgb(0, 0, 0);
-    border: 3px rgb(16, 143, 202) solid;
-    border-radius: 10px;
+    border: 4px rgb(0, 0, 0) solid;
+    border-radius: 8px;
     padding: 5px;
 }
 .btn:hover{
-    background-color: rgb(16, 143, 202);
+    background-color: rgb(221, 0, 255);
     color: rgb(0, 0, 0);
     padding: 10px;
 }
@@ -16,4 +16,9 @@
 }
 body{
     font-family: Jersey10-Regular;
+}
+header{
+    background-color: aqua;
+    padding-bottom: 6px;
+    padding-left: 3px;
 }
