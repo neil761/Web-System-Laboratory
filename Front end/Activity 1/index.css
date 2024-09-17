@@ -1,0 +1,56 @@
+.btn{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border: 4px rgb(0, 0, 0) solid;
+    border-radius: 8px;
+    padding: 5px;
+}
+.btn:hover{
+    background-color: rgb(215, 215, 215);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border: 4px rgb(0, 0, 0) solid;
+}
+@font-face {
+    font-family: Jersey10-Regular;
+    src: url('Jersey10-Regular.ttf');
+}
+body{
+    font-family: Jersey10-Regular;
+}
+.aaa{
+    background-color: aqua;
+}
+.colapse{
+    margin-left: 950px;
+}
+#carouselExampleDark {
+    width: 75%; 
+    height: 100%; 
+    margin: auto; 
+    padding-top: 10px;
+  }
+body{
+    background-color: rgb(154, 154, 154);
+}
+  .carousel-inner img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 70px;
+    border: 1px solid rgb(23, 23, 23); 
+    margin-top: 50px;
+  }
+  .naav{
+    margin-left: 950px;
+  }
+.drag{
+    margin-bottom: 50px;
+    margin-left: 50px;
+}
+.bleach{
+    margin-left: 50px;
+}
+.pico{
+    height: 400px;
+}
