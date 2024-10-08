@@ -1,0 +1,32 @@
+body{
+    background-color: black;
+}
+
+.container{
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(60, 68, 77);
+    width: 30%;
+    margin-left: 15%;
+    margin-top: 5%;
+    border-radius: 5%;
+}
+
+.btn{
+    border-color: white;
+}
+
+.but{
+    border-radius: 5px;
+    border: white solid;
+}
+
+.buts{
+    background-color: rgb(60, 68, 77);
+    border-radius: 5px;
+    border: white solid 0.5px;
+    color: white;
+}
+.buts:hover{
+    background-color: white;
+    color: black;
+}
