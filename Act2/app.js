@@ -2,6 +2,15 @@ const title = document.getElementById('title');
 const author = document.getElementById('author');
 const button = document.getElementById('button');
 const ol = document.getElementById('Anime');
+const list = document.querySelector('#Anime');
+
+//deleting
+list.addEventListener('click', function(e){
+    if(e.target.classList.contains('delete')){
+        const li = e.target.closest('li');
+        list.removeChild(li);
+    }
+})
 
 
 
