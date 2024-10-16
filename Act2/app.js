@@ -1,60 +1,121 @@
-const title = document.getElementById('title');
-const author = document.getElementById('author');
-const button = document.getElementById('button');
-const ol = document.getElementById('Anime');
-const list = document.querySelector('#Anime');
+// Working add and delete function
 
-//deleting
-list.addEventListener('click', function(e){
-    if(e.target.classList.contains('delete')){
-        const li = e.target.closest('li');
+const animeTitleForm = document.querySelector('#add-anime-title'); 
+const animeArtistForm = document.querySelector('#add-artist'); 
+const addButton = document.querySelector('#add-button');
+
+let animeTitleValue = '';
+let animeArtistValue = '';
+
+// Handle anime title input
+animeTitleForm.addEventListener('input', function(e) {
+    animeTitleValue = e.target.value;
+});
+
+// Handle anime artist input
+animeArtistForm.addEventListener('input', function(e) {
+    animeArtistValue = e.target.value;
+});
+
+// Add button click event
+addButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Check if both title and artist are filled
+    if (animeTitleValue && animeArtistValue) {
+        addAnimeToPlaylist(animeTitleValue, animeArtistValue);
+    } else {
+        alert('Both fields are required!');
+    }
+});
+
+// Function to add the anime to the playlist
+function addAnimeToPlaylist(title, artist) {
+    // Create new list item
+    const li = document.createElement('li');
+    li.classList.add('list-searchpart'); // Add class for styling
+
+    const animetitle = document.createElement('p');
+    const animeartist = document.createElement('small');
+    const deleteBtn = document.createElement('button');
+    const hr = document.createElement('hr');
+
+    
+    animetitle.textContent = title;
+    animeartist.textContent = artist;
+    deleteBtn.textContent = 'Delete';
+
+    
+    deleteBtn.classList.add('delete');
+    animetitle.classList.add('anime-title');
+    animeartist.classList.add('artist');
+
+    // Create a wrapper div for title and artist
+    const animeInfoDiv = document.createElement('div');
+    animeInfoDiv.classList.add('anime-info'); // Add class for styling
+    animeInfoDiv.appendChild(animetitle);
+    animeInfoDiv.appendChild(animeartist);
+
+    // Append elements to the <li>
+    li.appendChild(animeInfoDiv);  
+    li.appendChild(deleteBtn);
+
+    
+    const list = document.querySelector('#anime-list ul');
+    list.appendChild(li);
+    list.appendChild(hr);
+
+    // Reset the forms after adding
+    animeTitleForm.reset();
+    animeArtistForm.reset();
+
+    // Clear the stored values
+    animeTitleValue = '';
+    animeArtistValue = '';
+}
+
+// Handle the delete functionality
+const list = document.querySelector('#anime-list ul');
+
+list.addEventListener('click', function(e) {
+    if (e.target.className === 'delete') {
+        const li = e.target.parentElement;
+        const hr = li.nextElementSibling;
+
+        if (hr && hr.tagName === 'HR') {
+            hr.parentNode.removeChild(hr);
+        }
         list.removeChild(li);
     }
-})
+});
 
 
 
-button.addEventListener('click', () =>{
-    //get value from input form
-    const newTitle = title.value;
-    const newAuthor = author.value;
-    
-    //create element
-    const p = document.createElement('p');
-    const small = document.createElement('small');
-    const button = document.createElement('button')
-    const div1 = document.createElement('div');
-    const div2 = document.createElement('div');
-    const li = document.createElement('li');
+// searchbar function
+const searchBar = document.querySelector('.search-anime-part'); 
+const List = document.querySelector('#anime-list ul');
 
-    //set value to the element
-    p.innerHTML = newTitle;
-    small.innerHTML = newAuthor;
-    button.innerHTML = "Delete"
+searchBar.addEventListener('keyup', function(e) {
+    const term = e.target.value.toLowerCase(); 
+    const animeItems = list.getElementsByTagName('li'); 
 
-    //add class to element
-    small.classList.add('author', 'fw-light');
-    button.classList.add('btn', 'btn-danger');
-    div1.classList.add('fw-bold');
-    div2.classList.add('ms-2', 'me-auto');
-    li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-start');
+    Array.from(animeItems).forEach(function(animeItem) {
+        const title = animeItem.querySelector('.anime-title').textContent; 
 
+        // Check if the title contains the search term
+        if (title.toLowerCase().indexOf(term) !== -1) {
+            animeItem.style.display = 'flex'; // Show the item with flex layout
+        } else {
+            animeItem.style.display = 'none'; // Hide if it doesn't match
+        }
+    });
 
-    //create container
-    
-    
-    div1.append(p);
-    div1.append(small);
-    div2.append(div1);
-    li.append(div2);
-    li.append(button)
-
-    
-    //append to list
-    ol.append(li);
-
-    console.log(li)
-})
-
-
-
+    // Ensure HRs remain visible
+    const hrElements = list.querySelectorAll('hr');
+    hrElements.forEach(hr => {
+        // Control visibility of HR based on previous and next li visibility
+        const prevLiVisible = hr.previousElementSibling && hr.previousElementSibling.style.display !== 'none';
+        const nextLiVisible = hr.nextElementSibling && hr.nextElementSibling.style.display !== 'none';
+        hr.style.display = (prevLiVisible || nextLiVisible) ? 'block' : 'none'; // Show/hide based on visibility of adjacent <li>
+    });
+});
