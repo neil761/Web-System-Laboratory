@@ -24,7 +24,7 @@ app.use((req, res, next) =>{
  .then(() =>{
     //listen for request
    app.listen(process.env.PORT, () =>{
-   console.log('connected to db and  listening on port ', process.env.PORT)
+   console.log(` connectedto db and  listening on port ${process.env.PORT}`)
    })
  })
  .catch((error) =>{
