@@ -1,0 +1,26 @@
+body {
+    background: linear-gradient(to top, rgba(114, 255, 203, 0.636), rgb(185, 205, 200)) !important;
+}
+
+.card{
+    width: 18rem;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    background-color: rgb(255, 255, 255) !important;
+    border: 2px solid !important;
+    box-shadow: 5px 3px 3px 3px rgb(105, 105, 105);
+    transition: transform 0.6s;
+}
+.card:hover{
+    transform: scale(1.15);
+}
+.add{
+    margin-bottom: 5%;
+    margin-top: 3%;
+    margin-left: 75%;
+}
+.fw-bold{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
