@@ -78,7 +78,7 @@ const createCard = (reps, load, title, id) => {
 }
 
 const fetchData = async () => {
-    const response = await fetch('http://localhost:5000/api/workouts/');
+    const response = await fetch('http://localhost:5020/api/workouts/');
     const result = await response.json();
 
     return result;

@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to update workout
     function updateWorkout(workoutId, updatedData) {
-        fetch(`http://localhost:5000/api/workouts/${workoutId}`, {
+        fetch(`http://localhost:5020/api/workouts/${workoutId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

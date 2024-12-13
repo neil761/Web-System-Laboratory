@@ -1,6 +1,6 @@
 // delete.js
 function deleteWorkout(workoutId) {
-    fetch(`http://localhost:5000/api/workouts/${workoutId}`, {
+    fetch(`http://localhost:5020/api/workouts/${workoutId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
